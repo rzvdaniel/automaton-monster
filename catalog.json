@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "repo": "rzvdaniel/automaton-monster",
+  "apps": [
+    {
+      "id": "goatcounter",
+      "name": "GoatCounter",
+      "summary": "Privacy-friendly web analytics: easy to use, no cookies, no tracking of visitors.",
+      "category": "Analytics",
+      "folder": "analytics/goatcounter",
+      "commit": "7a24ae517d04c0b529f4d3ec4fc28298655a2583",
+      "minServerVersion": "0.2.55",
+      "permissions": [],
+      "movedFrom": {
+        "repo": "rzvdaniel/automaton-apps",
+        "folder": "analytics/goatcounter"
+      }
+    },
+    {
+      "id": "linkding",
+      "name": "linkding",
+      "summary": "Save, tag and search bookmarks on your own server.",
+      "category": "Productivity",
+      "folder": "productivity/linkding",
+      "commit": "7a24ae517d04c0b529f4d3ec4fc28298655a2583",
+      "minServerVersion": "0.2.55",
+      "permissions": [],
+      "movedFrom": {
+        "repo": "rzvdaniel/automaton-apps",
+        "folder": "productivity/linkding"
+      }
+    },
+    {
+      "id": "harbour",
+      "name": "Harbour Wallpaper",
+      "summary": "A living harbour island for your desktop that reacts to clicks: the sea, the sheep, the boats and the church bell.",
+      "category": "Wallpapers",
+      "folder": "wallpapers/harbour",
+      "commit": "fc89b1facaf619297fb3ba13416a39071d964b4d",
+      "minServerVersion": "0.2.31",
+      "permissions": [],
+      "movedFrom": {
+        "repo": "rzvdaniel/automaton-apps",
+        "folder": "wallpapers/harbour"
+      }
+    },
+    {
+      "id": "untranslatable",
+      "name": "Untranslatable",
+      "summary": "A multiplayer word-bluffing game: find the words no other language has a word for.",
+      "category": "Games",
+      "folder": "games/untranslatable",
+      "commit": "fc89b1facaf619297fb3ba13416a39071d964b4d",
+      "minServerVersion": "0.2.31",
+      "permissions": []
+    }
+  ]
+}
