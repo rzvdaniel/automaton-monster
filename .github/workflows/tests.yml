@@ -1,0 +1,40 @@
+name: App tests
+
+# One job for every app, whatever its language: it finds the app folders the pull request changed and runs each
+# app's own test.sh (see tools/run_app_tests.py). A change to a shared path (tools, workflows, design) runs all apps.
+# Add a test.sh to an app to have it tested; there is no per-app workflow.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: app-tests-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  app-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      # Runtimes the apps' test.sh scripts may call. An app needing another toolchain installs it in its test.sh.
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Tests of the changed apps (pull request)
+        if: github.event_name == 'pull_request'
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: python tools/run_app_tests.py --changed-since "origin/${BASE_REF}"
+      - name: Tests of every app (main)
+        if: github.event_name != 'pull_request'
+        run: python tools/run_app_tests.py

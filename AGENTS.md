@@ -16,10 +16,10 @@ Agent workflow skills in `.agents/skills/`: `apps-write-issue`, `apps-write-pr`,
 1. Create `<category>/<app>/` with `automaton.json` (a `name` and `summary` are required), source, tests and a `README.md`. Copy the shape of an existing app.
 2. If it has a page, vendor the UI kit into its `ui/` folder (see the skill).
 3. Add the folder to `catalog-apps.json` and the app to the table in `README.md`.
-4. Add a `.github/workflows/<app>-tests.yml` that runs the app's tests.
+4. Add a `test.sh` to the app folder (run from that folder; exit non-zero on failure). The shared `App tests` workflow runs it for changed apps; do not add a per-app workflow.
 
 ## CI
 
-`Catalog` runs the tool tests, `python tools/validate_apps.py` (the server's own `automaton validate` contract check on changed apps; needs the CLI), `python tools/check_vendored_ui.py` and `python tools/generate_catalog.py --validate`. Each app has its own tests workflow. Run the same commands locally before opening a pull request. The first `catalog.json` is written by CI after the first merge.
+`Catalog` runs the tool tests, `python tools/validate_apps.py` (the server's own `automaton validate` contract check on changed apps; needs the CLI), `python tools/check_vendored_ui.py` and `python tools/generate_catalog.py --validate`. `App tests` runs each changed app's `test.sh` (`tools/run_app_tests.py`), `Checks` runs `tools/check_manifests.py`, the pin check and the gate's tests, and `Merge gate`, `CodeQL` and `Dependency review` guard every pull request (tiers in `.github/CODEOWNERS`, logic in `.agents/tools/merge-gate.py`). Run the same commands locally before opening a pull request. The first `catalog.json` is written by CI after the first merge.
 
 Documentation: <https://automaton.monster/docs/apps-repository>
