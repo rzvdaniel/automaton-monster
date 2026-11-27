@@ -1,13 +1,13 @@
 # Automaton app UI kit
 
-One set of components for every app in this catalog, light and dark from the visitor's system, phone-ready. Version **2.0.0**.
+One set of components for every app in this catalog, light and dark from the visitor's system, phone-ready. Version **2.1.0**.
 
 ## Two looks
 
 | Look | For | How |
 | --- | --- | --- |
 | **app** (default) | Tools, productivity, anything people build | Neutral colours, system fonts, your accent: `:root { --accent: #0f766e; }` in the app's own CSS. Use your own mark, not `>_`. |
-| **system** | Only official apps that run the server: Server Console, backups, monitors | `<html data-look="system">`: the Automaton Studio look (paper and ink, orange, Bricolage Grotesque and IBM Plex, the `>_` mark, `a-topbar`). |
+| **system** | Only official apps that run the server: Server Keeper, backups, monitors | `<html data-look="system">`: the Automaton Studio look (paper and ink, orange, Bricolage Grotesque and IBM Plex, the `>_<` mark (`mark.svg`, inline in the page; `mark-small.svg` for 16px and favicons), `a-topbar`). |
 
 Keep the Studio look for system apps so people can tell Automaton from the apps on it, and an app never passes for an Automaton screen. Games bring their own style; at most they use the base reset.
 
@@ -41,28 +41,28 @@ Serve the files from the app and link them:
 <script src="ui/app.js"></script>
 ```
 
-Build the page only from the classes below (all start with `a-`). Add app-specific CSS in the app's own file, never by overriding kit classes. Use the colours through the custom properties (`var(--ok)`, `var(--orange)`, ...), so both themes keep working.
+Build the page only from the classes below (all start with `a-`). Add app-specific CSS in the app's own file, never by overriding kit classes. Use the colours through the custom properties (`var(--ink)`, `var(--orange)`, `var(--muted)`, ...), so both themes keep working.
 
 ## Components
 
 | Class | Use it for |
 | --- | --- |
 | `a-page` | The centred page wrapper (max 1120 px, 16 px side gutter). |
-| `a-header`, `a-brand`, `a-header__title`, `a-header__sub`, `a-header__actions` | Top of every page: the `>_` mark, app name, one line of context, an overall status pill and the theme button. |
+| `a-header`, `a-brand`, `a-header__title`, `a-header__sub`, `a-header__actions` | Top of every page: the `>_<` mark (`mark.svg`, inline in the page; `mark-small.svg` for 16px and favicons), app name, one line of context, an overall status pill and the theme button. |
 | `a-columns` | Cards of different heights, flowing into up to three columns with no holes (one on a phone). Use it for dashboards. |
 | `a-grid`, `a-grid--wide`, `a-stack` | Rows of cards of the same height; `a-stack` stacks things vertically. |
 | `a-topbar`, `a-topbar__inner` | System look: the dark Studio bar above `a-page`, holding the header parts. |
 | `a-banner` (+ `--warning/--critical`), `a-banner__title` | Page-level "needs you" list, above everything else: one line per problem with the fix. |
 | `a-card`, `a-card__head`, `a-card__title`, `a-card__foot` | One topic per card. Put a status pill at the right of the head. |
-| `a-pill` + `a-pill--ok` / `--warning` / `--critical`, `a-pill--large` | Status. Plain `a-pill` is neutral or unknown. Always write the status in words, never colour alone. |
+| `a-pill` + `a-pill--ok` / `--warning` / `--critical` / `--running`, `a-pill--large` | Status in the Studio Home colours: ok is quiet grey, warning and critical are the accent orange, running an orange outline, never green. Plain `a-pill` is neutral or unknown. Always write the status in words, never colour alone. |
 | `a-stats`, `a-stat` (+ `a-stat--ok/--warning/--critical`), `a-stat__label/__value/__hint` | A few headline numbers. |
 | `a-kv` | Label and value rows (`<dl>`). |
-| `a-meter` (+ `--warning/--critical`) with `style="--value:42%"` | A percentage of something. |
+| `a-meter` (+ `--warning/--critical`; the normal bar is dark) with `style="--value:42%"` | A percentage of something. |
 | `a-metric`, `a-metric__row`, `a-metric__spark` | A named figure with a meter and a trend line. |
 | `AutomatonUI.sparkline(values, {min, max, status, label})` | Inline SVG trend (see `app.js`); style it with `a-spark`. |
 | `a-table-wrap`, `a-table`, `a-num` | Tables that scroll sideways on a phone instead of breaking the page. |
 | `a-list` | Rows with a name on the left and a pill or value on the right. |
-| `a-btn`, `a-btn--primary`, `a-btn--icon` | Actions. One primary button per view. |
+| `a-btn`, `a-btn--primary`, `a-btn--danger` (the only red), `a-btn--icon` | Actions. One primary button per view. |
 | `a-form`, `a-field`, `a-label`, `a-input`, `a-hint` | Forms. |
 | `a-note` (+ `--warning/--critical`) | A short message inside a card. |
 | `a-empty` | Nothing to show yet. |

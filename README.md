@@ -12,8 +12,9 @@ Showcase apps, games and experiments for [Automaton](https://automaton.monster),
 | linkding — a bookmark manager, packaged from the upstream image | [productivity/linkding](productivity/linkding/) |
 | Harbour Wallpaper — a living harbour island for your desktop that reacts to clicks | [wallpapers/harbour](wallpapers/harbour/) |
 | Untranslatable — a multiplayer word-bluffing game | [games/untranslatable](games/untranslatable/) |
+| Head Counter — tracks server and CLI release downloads, excluding our own checks | [tools/head-counter](tools/head-counter/) |
 
-GoatCounter, linkding and Harbour used to be in the official catalog. Their entries carry `movedFrom`, so a server that installed one of them there shows it as installed and updates it from here.
+GoatCounter, linkding, Harbour and Head Counter used to be in the official catalog. Their entries carry `movedFrom`, so a server that installed one of them there shows it as installed and updates it from here.
 
 ## Use this store on your server
 
